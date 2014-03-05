@@ -1,6 +1,10 @@
+# If not running interactively, don't do anything
+[ -z "$PS1" ] && return
+
 include(){
 
-    baseDir='configs/'
+    baseDir=$(dirname ${BASH_SOURCE[0]})'/'
+    configsDir=$baseDir'configs/'
     declare -a configsArray
     isRequired=0
 
@@ -8,7 +12,10 @@ include(){
     do
         case $arg in
             -s)
-                baseDir='.configs/'
+                configsDir=$baseDir'.configs/'
+                ;;
+            -t)
+                configsDir=$baseDir'themes/'
                 ;;
             -r)
                 isRequired=1
@@ -21,7 +28,7 @@ include(){
 
     for configName in "${configsArray[@]}"
     do
-        config=$baseDir$configName".bash"
+        config=$configsDir$configName".bash"
 
         if [[ -f $config ]]; then
             source $config
@@ -40,10 +47,27 @@ include(){
     unset configName
     unset configsArray
     unset isRequired
-    unset baseDir
+    unset configsDir
 
 }
 
-include main system git grep mysql svn
+if [[ -z $include ]]
+then
+    include main system git grep mysql svn
+else
+    include $include
+fi
 
-include -s work
+if [[ -z $sinclude ]]
+then
+    include -s work
+else
+    include -s $sinclude
+fi
+
+if [[ -z $theme ]]
+then
+    include -t main
+else
+    include -t $theme
+fi

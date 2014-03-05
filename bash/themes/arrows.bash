@@ -1,28 +1,8 @@
-# vim: ft=bash ts=2 sw=2 sts=2
+# Arrows theme
 #
-# agnoster's Theme - https://gist.github.com/3712874
-# A Powerline-inspired theme for BASH
+# Based on agnoster's Theme - https://gist.github.com/3712874
 #
-# (Converted from ZSH theme by Kenny Root)
-#
-# # README
-#
-# In order for this theme to render correctly, you will need a
-# [Powerline-patched font](https://gist.github.com/1595572).
-#
-# In addition, I recommend the
-# [Solarized theme](https://github.com/altercation/solarized/) and, if you're
-# using it on Mac OS X, [iTerm 2](http://www.iterm2.com/) over Terminal.app -
-# it has significantly better color fidelity.
-#
-# # Goals
-#
-# The aim of this theme is to only show you *relevant* information. Like most
-# prompts, it will only show git information when in a git working directory.
-# However, it goes a step further: everything from the current user and
-# hostname to whether the last call exited with an error to whether background
-# jobs are running in this shell will all be displayed automatically when
-# appropriate.
+# Created by Great-Antique - https://github.com/Great-Antique
  
 ### Segment drawing
 # A few utility functions to make it easy and re-usable to draw segmented prompts
@@ -34,6 +14,7 @@ text_effect() {
   case "$1" in
     reset)     echo 0;;
     bold)      echo 1;;
+    reverse)   echo 3;;
     underline) echo 4;;
   esac
 }
@@ -48,6 +29,7 @@ fg_color() {
     magenta) echo 35;;
     cyan)    echo 36;;
     white)   echo 37;;
+    reverse)   echo 3;;
   esac
 }
 
@@ -75,11 +57,11 @@ ansi() {
     fi
     seq="${seq}${codes[$i]}"
   done
-  echo -ne '\[\033['${seq}'m\]'
+  echo -ne '\033['${seq}'m'
 }
 
 ansi_single() {
-  echo -ne '\[\033['$1'm\]'
+  echo -ne '\033['$1'm'
 }
 
 # Begin a segment
@@ -126,11 +108,18 @@ prompt_end() {
  
 # Context: user@hostname (who am I and where am I)
 prompt_context() {
-  local user=`whoami`
+  local user=`whoami` fgcolor bgcolor
+
+    if [[ $UID -eq 0 ]]
+    then
+        fgcolor='white'
+        bgcolor='red'
+    else
+        fgcolor='black'
+        bgcolor='yellow'
+    fi
  
-  if [[ $user != $DEFAULT_USER || -n $SSH_CLIENT ]]; then
-    prompt_segment black default "$user@\h"
-  fi
+    prompt_segment $bgcolor $fgcolor "$user@$1"
 }
  
 git_status_dirty() {
@@ -141,14 +130,15 @@ git_status_dirty() {
 # Git: branch/detached head, dirty status
 prompt_git() {
   local ref dirty
+
   if $(git rev-parse --is-inside-work-tree >/dev/null 2>&1); then
     ZSH_THEME_GIT_PROMPT_DIRTY='±'
     dirty=$(git_status_dirty)
     ref=$(git symbolic-ref HEAD 2> /dev/null) || ref="➦ $(git show-ref --head -s --abbrev |head -n1 2> /dev/null)"
     if [[ -n $dirty ]]; then
-      prompt_segment yellow black
-    else
       prompt_segment green black
+    else
+      prompt_segment black green
     fi
     echo -n "${ref/refs\/heads\//⭠ }$dirty"
   fi
@@ -156,7 +146,14 @@ prompt_git() {
  
 # Dir: current working directory
 prompt_dir() {
-  prompt_segment blue black '\w'
+    if [[ $UID -eq 0 ]]
+    then
+        #prompt_segment black red $(pwd)
+        prompt_segment black red $(pwd)
+    else
+        #prompt_segment black yellow $(pwd)
+        prompt_segment black yellow $(pwd)
+    fi
 }
  
 # Status:
@@ -166,21 +163,22 @@ prompt_dir() {
 prompt_status() {
   local symbols
   symbols=()
-  [[ $RETVAL -ne 0 ]] && symbols+="$(ansi_single $(fg_color red))✘"
-  [[ $UID -eq 0 ]] && symbols+="$(ansi_single $(fg_color yellow))⚡"
-  [[ $(jobs -l | wc -l) -gt 0 ]] && symbols+="$(ansi_single $(fg_color cyan))⚙"
+
+  [[ $RETVAL -ne 0 ]] && symbols+="✘"
+  [[ $UID -eq 0 ]] && symbols+="⚡"
+  [[ $(jobs -l | wc -l) -gt 0 ]] && symbols+="⚙"
  
-  [[ -n "$symbols" ]] && prompt_segment black default "$symbols"
+  [[ -n "$symbols" ]] && prompt_segment red white "$symbols"
 }
  
 ## Main prompt
 build_prompt() {
   RETVAL=$?
   prompt_status
-  prompt_context
+  prompt_context $1
   prompt_dir
   prompt_git
   prompt_end
 }
  
-PS1='$(ansi_single $(text_effect reset))$(build_prompt) '
+PS1='$(ansi_single $(text_effect reset))$(build_prompt \h)\$ '
