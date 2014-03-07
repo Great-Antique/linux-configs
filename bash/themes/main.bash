@@ -1,12 +1,16 @@
 # show git branch
 parse_git_branch() {
-  if ! git rev-parse --git-dir > /dev/null 2>&1; then
+    local dirty
+  if ! git rev-parse --is-inside-work-tree > /dev/null 2>&1; then
     return 0
   fi
+
+  dirty=''
+  [[ -n $(git status -s 2> /dev/null | tail -n 1) ]] && dirty="*"
  
   git_branch=$(git branch 2>/dev/null| sed -n '/^\*/s/^\* //p')
  
-  echo " [$git_branch]"
+  echo " [$git_branch$dirty]"
 }
 
 # Set colorful PS1 only on colorful terminals.
