@@ -1,0 +1,24 @@
+caption always
+caption string "%{yk}%H %{rk} %c %{dd} %{+b M}%n  %{-b dd}%-w%{+b Bw}%n* %t%{-}%+w%<"
+attrcolor u "-u w"
+autodetach on
+bell_msg "Bell! [ %t (%n) ] "
+logfile '.screenlog.%n'
+nethack on
+defscrollback 10000
+startup_message off
+deflogin off
+vbell off
+bind ' ' windows
+bind ^k
+bind k
+bind K kill
+bind r eval "split" "resize 15" "focus bottom"
+bind R eval "split" "resize 25" "focus bottom"
+bind q eval "split" "resize 15" "focus" "next" "focus"
+termcapinfo xterm* OL=10000
+shelltitle screen
+sorendition 02 23
+
+# binding sample
+#bind C screen -t NAME ssh user@host
