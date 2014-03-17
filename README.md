@@ -8,6 +8,7 @@ for bash, screen, vim etc
 Add this to your **~/.bashrc**
 ```bash
 theme='main'
+disableTouchpad=1
 source ~/path/to/cloned/repo/bash/.bashrc
 ```
 
