@@ -26,6 +26,8 @@ alias llg='ll | grep '
 
 alias duh='du -h --max-depth=1'
 
+alias upgrade='aptitude update && aptitude safe-upgrade'
+
 # bash completion
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
