@@ -14,7 +14,7 @@
     new = green 
 [color "status"]
     added = yellow
-    changed = green
+    changed = magenta
     untracked = red
 [core]
 	autocrlf = input
