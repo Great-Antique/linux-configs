@@ -1,0 +1,36 @@
+[user]
+	email = den.girnyk@uvoteam.com
+	name = Den Girnyk
+[color]
+	status = always
+[color "branch"]
+    current = yellow reverse
+    local = yellow
+    remote = cyan
+[color "diff"]
+    meta = yellow bold
+    frag = magenta bold
+    old = red 
+    new = green 
+[color "status"]
+    added = yellow
+    changed = green
+    untracked = red
+[core]
+	autocrlf = input
+[giggle]
+	main-window-maximized = true
+	main-window-geometry = 490x195+203+170
+	show-graph = true
+	history-view-vpane-position = 451
+	main-window-view = HistoryView
+	file-view-vpane-position = 613
+[alias]
+	co = checkout
+	ci = commit
+	st = status
+	br = branch --color
+	bra = branch -a --color
+	hist = log --pretty=format:\"%Cred%h %Cgreen%ad %Creset%s%d %Cblue[%an]\" --graph --date=short --color
+	type = cat-file -t
+	dump = cat-file -p
