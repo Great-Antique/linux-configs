@@ -6,7 +6,26 @@ HISTCONTROL=ignoredups:ignorespace
 shopt -s histappend
 
 # save all history
-PROMPT_COMMAND='history -n; history -a; echo -ne "\033]0;${USER}@${HOSTNAME}: ${PWD/${HOME}/~}\007"'
+SAVEHISTORY='history -n; history -a; ';
+
+if [[ $shortPwdInTitle == 1 ]]
+then
+    getShortPwd(){
+        if [[ $PWD == $HOME ]]; then
+            SHORT_PWD='~'
+        else
+            if [[ `echo $PWD | grep -o $HOME | wc -l` -eq 1 ]]; then
+                SHORT_PWD="~/.../"`echo ${PWD/${HOME}/\~} | awk '{gsub(/\/$/, ""); print}' | awk -F '/' '{print $NF }'`
+            else
+                SHORT_PWD=".../"`echo $PWD | awk '{gsub(/\/$/, ""); print}' | awk -F '/' '{print $NF }'`
+            fi
+        fi
+        echo $SHORT_PWD
+    }
+    PROMPT_COMMAND=$SAVEHISTORY'SHORT_PWD=`getShortPwd`; echo -ne "\033]0;${USER}@${HOSTNAME}: $SHORT_PWD\007"'
+else
+    PROMPT_COMMAND=$SAVEHISTORY'echo -ne "\033]0;${USER}@${HOSTNAME}\007"'
+fi
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
 HISTSIZE=1000
