@@ -53,7 +53,7 @@ include(){
 
 if [[ -z $include ]]
 then
-    include main system git grep mysql svn
+    include main git grep mysql svn
 else
     include $include
 fi
