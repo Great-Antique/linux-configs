@@ -31,6 +31,6 @@
 	st = status
 	br = branch --color
 	bra = branch -a --color
-	hist = log --pretty=format:\"%Cred%h %Cgreen%ad %Creset%s%d %Cblue[%an]\" --graph --date=short --color
+	hist = log --pretty=format:\"%Cred%h %Cgreen%ad %Creset%s%d %Cblue[%an]\" --graph --date=iso8601 --color
 	type = cat-file -t
 	dump = cat-file -p
