@@ -6,7 +6,8 @@ HISTCONTROL=ignoredups:ignorespace
 shopt -s histappend
 
 # save all history
-SAVEHISTORY='history -n; history -a; ';
+# SAVEHISTORY='history -n; history -a; ';
+SAVEHISTORY='history -a; ';
 
 if [[ $shortPwdInTitle == 1 ]]
 then
