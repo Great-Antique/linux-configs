@@ -18,6 +18,7 @@
     untracked = red
 [core]
 	autocrlf = input
+    editor = vim
 [giggle]
 	main-window-maximized = true
 	main-window-geometry = 490x195+203+170
@@ -32,5 +33,9 @@
 	br = branch --color
 	bra = branch -a --color
 	hist = log --pretty=format:\"%Cred%h %Cgreen%ad %Creset%s%d %Cblue[%an]\" --graph --date=iso8601 --color
+    ll = log --pretty=format:\"%Cred%h %Cgreen%ad %Creset%s%d %Cblue[%an]\" --date=iso8601 --color
+    lln = log --pretty=format:\"%h %ad %s%d [%an]\" --date=iso8601
 	type = cat-file -t
 	dump = cat-file -p
+    cp = cherry-pick
+    rem = remote -v
