@@ -23,9 +23,9 @@ then
         fi
         echo $SHORT_PWD
     }
-    PROMPT_COMMAND=$SAVEHISTORY'SHORT_PWD=`getShortPwd`; echo -ne "\033]0;${USER}@${HOSTNAME}: $SHORT_PWD\007"'
+    PROMPT_COMMAND=$SAVEHISTORY'SHORT_PWD=`getShortPwd`; echo -ne "\033]0; ${USER}@${HOSTNAME} : $SHORT_PWD\007"'
 else
-    PROMPT_COMMAND=$SAVEHISTORY'echo -ne "\033]0;${USER}@${HOSTNAME}\007"'
+    PROMPT_COMMAND=$SAVEHISTORY'echo -ne "\033]0; ${USER}@${HOSTNAME} \007"'
 fi
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
