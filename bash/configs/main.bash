@@ -93,7 +93,7 @@ if ! shopt -oq posix; then
 fi
 
 # disable touchpad
-if [[ $disableTouchpad == 1 ]]
+if [[ $toggleTouchpad == 0 ]]
 then
     declare -i touchPadId
     touchPadId=`xinput list | grep -Eo 'TouchPad\s*id\=[0-9]{1,2}' | grep -Eo '[0-9]{1,2}'`
@@ -103,6 +103,19 @@ then
     then
         xinput disable $touchPadId
         echo "Touchpad disabled."
+    fi
+fi
+
+if [[ $toggleTouchpad == 1 ]]
+then
+    declare -i touchPadId
+    touchPadId=`xinput list | grep -Eo 'TouchPad\s*id\=[0-9]{1,2}' | grep -Eo '[0-9]{1,2}'`
+    declare -i touchPadState
+    touchPadState=`xinput list-props $touchPadId | grep 'Device Enabled' | awk '{print $4}'`
+    if [ $touchPadState -eq 0 ]
+    then
+        xinput enable $touchPadId
+        echo "Touchpad enabled."
     fi
 fi
 
