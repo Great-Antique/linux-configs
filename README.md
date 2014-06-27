@@ -8,10 +8,11 @@
 ## Usage
 
 ### Bash
+Enable touchpad or disable it
 **~/.bashrc**
 ```bash
 theme='main'
-disableTouchpad=1
+toggleTouchpad=1 # enable or 0 for disable
 source ~/path/to/cloned/repo/bash/.bashrc
 ```
 
