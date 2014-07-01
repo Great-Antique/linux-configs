@@ -202,3 +202,5 @@ vmap gl :<C-U>!svn blame <C-R>=expand("%:p") <CR> \| sed -n <C-R>=line("'<") <CR
 "if has('mouse')
 "    set mouse=a
 "endif
+
+au BufNewFile,BufRead sql* set filetype=mysql
