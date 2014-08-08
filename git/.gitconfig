@@ -16,6 +16,7 @@
 [core]
 	autocrlf = input
     editor = vim
+    excludesfile = ~/linux-configs/git/gitignore
 [giggle]
 	main-window-maximized = true
 	main-window-geometry = 490x195+203+170
