@@ -1,6 +1,6 @@
 .idea
-vendor
-composer.lock
-build
-nbproject
-deploy
+#vendor
+#composer.lock
+#build
+#nbproject
+#deploy
