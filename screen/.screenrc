@@ -13,9 +13,6 @@ bind ' ' windows
 bind ^k
 bind k
 bind K kill
-bind r eval "split" "resize 15" "focus bottom"
-bind R eval "split" "resize 25" "focus bottom"
-bind q eval "split" "resize 15" "focus" "next" "focus"
 termcapinfo xterm* OL=10000
 shelltitle screen
 sorendition 02 23
