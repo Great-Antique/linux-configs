@@ -71,3 +71,15 @@ then
 else
     include -t $theme
 fi
+
+### Attach screens on remote server
+
+if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
+    if [ !-z $STY ]; then
+        if  [ `screen -ls | grep 'Detached' | wc -l` -eq 1 ]; then
+            screen -rd
+        else
+            echo "There are no or more than 1 detached screens"
+        fi
+    fi
+fi
