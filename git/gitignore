@@ -2,5 +2,5 @@
 #vendor
 #composer.lock
 #build
-#nbproject
+nbproject
 #deploy
