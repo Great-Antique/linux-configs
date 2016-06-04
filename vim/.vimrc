@@ -180,6 +180,8 @@ set wildmenu
 " let g:neocomplcache_omni_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
 " "autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
 " let g:neocomplcache_omni_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
+" 
+" vmap gl :<C-U>!svn blame <C-R>=expand("%:p") <CR> \| sed -n <C-R>=line("'<") <CR>,<C-R>=line("'>") <CR>p <CR>
 
 let g:MultipleSearchMaxColors = 8
 let g:MultipleSearchColorSequence = "red,yellow,blue,green,magenta,cyan,gray,brown"

@@ -119,3 +119,8 @@ then
     fi
 fi
 
+function searchinbrowser {
+    xdg-open `getsearchurl "$@"`
+}
+
+alias '?'='searchinbrowser'
