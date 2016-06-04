@@ -1,0 +1,25 @@
+#!/usr/bin/env php 
+<?php
+
+$baseUrl = 'https://duckduckgo.com/';
+$baseUrl = 'https://google.com/search';
+
+unset($argv[0]);
+
+$query = implode(' ', $argv);
+$query = urlencode($query);
+
+
+$url = sprintf('%s?q=%s', $baseUrl, $query);
+
+echo $url;
+
+// $url = sprintf('http://api.duckduckgo.com/?format=json&q=%s', $query);
+// 
+// die($url);
+// 
+// $response = file_get_contents($url);
+// 
+// $json = @json_decode($response);
+// 
+// var_dump($json);

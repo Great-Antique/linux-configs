@@ -81,3 +81,15 @@ if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
         fi
     fi
 fi
+
+
+# set PATH so it includes user's private bin if it exists
+if [ -d "$HOME/bin" ] ; then
+    PATH="$HOME/bin:$PATH"
+fi
+# set PATH so it includes linux-configs bin if it exists
+baseDir=$(dirname ${BASH_SOURCE[0]})'/'
+binDir=$baseDir'bin'
+if [ -d $binDir ] ; then
+    PATH="$binDir:$PATH"
+fi
