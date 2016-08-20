@@ -93,3 +93,7 @@ binDir=$baseDir'bin'
 if [ -d $binDir ] ; then
     PATH="$binDir:$PATH"
 fi
+# add composer bin to PATH
+if [ -d "$HOME/.composer/vendor/bin" ] ; then
+    PATH="$HOME/.composer/vendor/bin:$PATH"
+fi
