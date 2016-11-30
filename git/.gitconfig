@@ -30,7 +30,8 @@
 	st = status
 	br = branch --color
 	bra = branch -a --color
-    hist = log --pretty=format:\"%Cred%h %Cgreen%ad %Creset%s%C(yellow)%d %Cblue%an [%ae]\" --graph --date=iso8601 --color
+    short = log --pretty=format:\"%Cred%h %Cgreen%ad %Creset%s%C(yellow)%d %Cblue%an [%ae]\" --graph --date=iso8601 --color
+    hist = log --pretty=format:\"%Cgreen%h %x09%Creset%<(80,trunc)%s %gn %C(yellow)%<(1,trunc)%D %x09%Creset%Cblue%<(20,ltrunc)%an %Creset%<(30,trunc)%ae %Cgreen%<(12,trunc)%ar %Creset%<(21,trunc)%ai %C(yellow)%<(60,trunc)%D\" --graph --color
     ll = log --pretty=format:\"%Cred%h %Cgreen%ad %Creset%s%d %Cblue[%an]\" --date=iso8601 --color
     lln = log --pretty=format:\"%h %ad %s%d [%an]\" --date=iso8601
 	type = cat-file -t
