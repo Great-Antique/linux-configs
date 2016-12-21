@@ -76,7 +76,8 @@ alias la='ls -A'
 alias l='ls -CF'
 alias llg='ll | grep '
 
-alias duh='du -h --max-depth=1'
+#alias duh='du -h --max-depth=1'
+alias duh='du -sch *'
 
 alias upgrade='aptitude update && aptitude safe-upgrade'
 
