@@ -38,3 +38,4 @@
 	dump = cat-file -p
     cp = cherry-pick
     rem = remote -v
+    please = push --force-with-lease
