@@ -97,3 +97,10 @@ fi
 if [ -d "$HOME/.composer/vendor/bin" ] ; then
     PATH="$HOME/.composer/vendor/bin:$PATH"
 fi
+# add composer alter bin to PATH
+if [ -d "$HOME/.config/composer/vendor/bin" ] ; then
+    PATH="$HOME/.config/composer/vendor/bin:$PATH"
+fi
+
+# Symfony autocomplete
+eval "$(symfony-autocomplete)"
