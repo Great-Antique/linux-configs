@@ -1,3 +1,4 @@
-bash/.configs
+bash/.configs/*
+!bash/.configs/.gitkeep
 bash/.bin
 .idea
