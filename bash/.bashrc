@@ -37,8 +37,8 @@ include(){
             then
                 echo "Required config $config doesn't exists"
                 return 1;
-            else
-                echo "Config $config doesn't exists"
+            # else
+            #     echo "Config $config doesn't exists"
             fi
         fi
     done
