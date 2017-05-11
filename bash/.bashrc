@@ -103,4 +103,7 @@ if [ -d "$HOME/.config/composer/vendor/bin" ] ; then
 fi
 
 # Symfony autocomplete
-eval "$(symfony-autocomplete)"
+type symfony-autocomplete >> /dev/null 2>&1
+if [ $? -eq 0 ]; then
+    eval "$(symfony-autocomplete --aliases spress)"
+fi
