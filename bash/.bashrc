@@ -105,5 +105,5 @@ fi
 # Symfony autocomplete
 type symfony-autocomplete >> /dev/null 2>&1
 if [ $? -eq 0 ]; then
-    eval "$(symfony-autocomplete --aliases spress)"
+    eval "$(symfony-autocomplete --aliases spress --aliases robo)"
 fi

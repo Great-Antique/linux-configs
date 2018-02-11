@@ -13,6 +13,10 @@ parse_git_branch() {
     echo " [$git_branch$dirty]"
 }
 
+current_datetime() {
+    echo $(date '+%H:%M:%S')
+}
+
 # Set colorful PS1 only on colorful terminals.
 # dircolors --print-database uses its own built-in database
 # instead of using /etc/DIR_COLORS.  Try to use the external file
@@ -39,15 +43,15 @@ if ${use_color} ; then
 
     if [[ $SSH_CLIENT == '' ]] ; then
         if [[ ${EUID} == 0 ]] ; then
-            PS1='${debian_chroot:+($debian_chroot)}\[\033[31m\]\u\[\033[32m\]$(parse_git_branch)\[\033[35m\] \w \[\033[00m\]\$ '
+            PS1='$(current_datetime) ${debian_chroot:+($debian_chroot)}\[\033[31m\]\u\[\033[32m\]$(parse_git_branch)\[\033[35m\] \w \[\033[00m\]\$ '
         else
-            PS1='${debian_chroot:+($debian_chroot)}\[\033[34m\]\u\[\033[32m\]$(parse_git_branch)\[\033[35m\] \w \[\033[00m\]\$ '
+            PS1='$(current_datetime) ${debian_chroot:+($debian_chroot)}\[\033[34m\]\u\[\033[32m\]$(parse_git_branch)\[\033[35m\] \w \[\033[00m\]\$ '
         fi
     else 
         if [[ ${EUID} == 0 ]] ; then
-            PS1='${debian_chroot:+($debian_chroot)}\[\033[31m\]\u@\h\[\033[32m\]$(parse_git_branch)\[\033[35m\] \w \[\033[00m\]\$ '
+            PS1='$(current_datetime) ${debian_chroot:+($debian_chroot)}\[\033[31m\]\u@\h\[\033[32m\]$(parse_git_branch)\[\033[35m\] \w \[\033[00m\]\$ '
         else
-            PS1='${debian_chroot:+($debian_chroot)}\[\033[33m\]\u@\h\[\033[32m\]$(parse_git_branch)\[\033[35m\] \w \[\033[00m\]\$ '
+            PS1='$(current_datetime) ${debian_chroot:+($debian_chroot)}\[\033[33m\]\u@\h\[\033[32m\]$(parse_git_branch)\[\033[35m\] \w \[\033[00m\]\$ '
         fi
     fi
 
