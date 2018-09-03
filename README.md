@@ -5,7 +5,15 @@
 - screen
 - git
 
-## Usage
+# Usage
+
+## Install with a installation script
+
+```bash
+bash ~/path/to/cloned/repo/install.sh
+```
+
+## Manually
 
 ### Bash
 Enable touchpad or disable it
