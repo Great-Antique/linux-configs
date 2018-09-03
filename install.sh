@@ -23,6 +23,8 @@ else
     if [[ -f ~/.bashrc ]]; then
         echo "File '~/.bashrc' is already exists."
         echo "Run this command with '--force' option to backup and overwrite it"
+
+        exit 1;
     fi
 fi
 
@@ -42,6 +44,8 @@ else
     if [[ -f ~/.screenrc ]]; then
         echo "File '~/.screenrc' is already exists."
         echo "Run this command with '--force' option to backup and overwrite it"
+
+        exit 1;
     fi
 fi
 
@@ -61,6 +65,8 @@ else
     if [[ -f ~/.vimrc ]]; then
         echo "File '~/.vimrc' is already exists."
         echo "Run this command with '--force' option to backup and overwrite it"
+
+        exit 1;
     fi
 fi
 
