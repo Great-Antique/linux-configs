@@ -1,8 +1,17 @@
+## Install with a installation script
+
+```bash
+bash ~/path/to/cloned/repo/install.sh
+```
+
+## Install manually
+
 ### Bash
+Enable touchpad or disable it
 **~/.bashrc**
 ```bash
 theme='main'
-disableTouchpad=1
+toggleTouchpad=1 # enable or 0 for disable
 source ~/path/to/cloned/repo/bash/.bashrc
 ```
 
