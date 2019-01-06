@@ -1,0 +1,3 @@
+[submodule "ext/z"]
+	path = ext/z
+	url = https://github.com/rupa/z.git
