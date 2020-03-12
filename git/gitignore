@@ -1,6 +1,5 @@
 /.idea/
-#vendor
-#composer.lock
-#build
 /nbproject/
-#deploy
+
+# Language server logs https://github.com/gtache/intellij-lsp
+/lsp
