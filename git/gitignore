@@ -3,3 +3,6 @@
 
 # Language server logs https://github.com/gtache/intellij-lsp
 /lsp
+
+# SonarQube Scanner
+/.scannerwork
