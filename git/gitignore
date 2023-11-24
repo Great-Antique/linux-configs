@@ -6,3 +6,6 @@
 
 # SonarQube Scanner
 /.scannerwork
+
+# MacOS
+.DS_Store
